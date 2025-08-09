@@ -25,4 +25,27 @@
     "files": ["**/*"],
     "directories": { "buildResources": "build" }
   }
+}{
+  "name": "doctor-format",
+  "version": "1.0.0",
+  "description": "Doctor Format - Screenwriting Formatting Tool",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.doctorformat.app",
+    "productName": "Doctor Format",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": "dmg"
+    }
+  },
+  "devDependencies": {
+    "electron": "^29.1.0",
+    "electron-builder": "^24.13.3"
+  }
 }
+
