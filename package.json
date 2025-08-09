@@ -49,3 +49,9 @@
   }
 }
 
+"build": {
+  "appId": "com.yourapp.id",
+  "mac": {
+    "category": "public.app-category.productivity"
+  }
+}
