@@ -1,0 +1,27 @@
+name: macOS Intel DMG
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-macos-intel:
+    runs-on: macos-13
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install deps
+        run: npm ci
+      - name: Build Intel DMG (unsigned)
+        env:
+          CSC_IDENTITY_AUTO: false
+        run: npx electron-builder --mac --x64 --config.mac.identity=false
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: DoctorFormat-Intel
+          path: dist/*
