@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '18'
       - name: Install deps
-        run: npm ci
+        run: - run: npm install
       - name: Build Intel DMG (unsigned)
         env:
           CSC_IDENTITY_AUTO: false
