@@ -1,0 +1,28 @@
+{
+  "name": "doctor-format-coach",
+  "version": "1.2.0",
+  "description": "Doctor Format — Writing Coach (menu bar + hotkeys)",
+  "main": "main.js",
+  "author": "You",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder -m"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.yourname.doctorformat",
+    "productName": "Doctor Format Coach",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": ["dmg", "zip"],
+      "icon": "build/icon.png"
+    },
+    "files": ["**/*"],
+    "directories": { "buildResources": "build" }
+  }
+}

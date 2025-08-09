@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doctor Format — Writing Coach</title>
+  <style>
+    :root { --bg:#0f0f0f; --panel:#1b1b1b; --accent:#ffcc00; --text:#f2f2f2; --muted:#a0a0a0; --border:#2c2c2c; }
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,system-ui,Segoe UI,Roboto,Arial,sans-serif;}
+    #df-toggle{position:fixed;bottom:18px;right:18px;z-index:100000;border:none;border-radius:50%;padding:12px 16px;font-weight:700;background:var(--accent);color:#000;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,.45);}
+    #df-panel{position:fixed;top:0;right:-420px;width:400px;height:100vh;z-index:99999;background:var(--panel);border-left:1px solid var(--border);box-shadow:-6px 0 20px rgba(0,0,0,.45);transition:right .28s ease;display:flex;flex-direction:column;}
+    #df-panel.open{right:0;}
+    header{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#1a1a1a;border-bottom:1px solid var(--border);color:var(--accent);font-weight:700;}
+    #df-search{width:100%;box-sizing:border-box;padding:8px 10px;margin:10px;border-radius:8px;border:1px solid var(--border);background:#121212;color:var(--text);}
+    .inner{flex:1;overflow:auto;padding:6px 10px 14px;}
+    details{background:#161616;border:1px solid var(--border);border-radius:10px;margin:8px 0;}
+    summary{padding:10px 12px;cursor:pointer;font-weight:700;color:var(--accent);}
+    .hint{color:var(--muted);font-size:12.5px;padding:0 12px 8px;}
+    pre{position:relative;background:#0f0f0f;border:1px solid var(--border);border-radius:8px;padding:10px;margin:8px 10px;white-space:pre-wrap;color:#f7f7f7;font-family:"Courier New",ui-monospace,Menlo,Consolas,monospace;}
+    button.copy{position:absolute;top:6px;right:8px;font-size:12px;border:none;background:none;color:var(--muted);cursor:pointer;}
+    button.copy:hover{color:var(--accent);}
+    .pill{display:inline-block;border:1px solid var(--border);padding:2px 8px;border-radius:999px;font-size:12px;color:var(--muted);margin:0 6px 6px 0;}
+    .row{display:flex;gap:8px;flex-wrap:wrap;padding:0 12px 8px;}
+    .pro{padding:0 12px 8px;color:#cfcfcf;font-size:12.5px;}
+  </style>
+</head>
+<body>
+  <button id="df-toggle" title="Doctor Format">DF</button>
+  <aside id="df-panel" aria-label="Doctor Format Writing Coach">
+    <header>
+      <span>Doctor Format — Writing Coach</span>
+      <button class="close" id="df-close" aria-label="Close" style="background:none;border:none;color:#a0a0a0;cursor:pointer;font-size:18px;">✕</button>
+    </header>
+    <input id="df-search" type="search" placeholder="Search: action, montage, dual, V.O., slugline…" />
+    <div class="inner" id="df-content">
+
+      <details open data-tags="slug slugline scene heading where when location time">
+        <summary>Scene Headings (Sluglines)</summary>
+        <div class="hint"><b>Lesson:</b> Where + When. Specific, not poetic.</div>
+        <div class="row"><span class="pill">Where?</span><span class="pill">When?</span><span class="pill">Specificity</span></div>
+        <div class="hint"><b>Basic:</b></div>
+        <pre><button class="copy" data-copy="INT. HOUSE - DAY">Copy</button>INT. HOUSE - DAY</pre>
+        <div class="hint"><b>Elevated:</b></div>
+        <pre><button class="copy" data-copy="INT. VICTORIAN TOWNHOUSE - STUDY - DAY">Copy</button>INT. VICTORIAN TOWNHOUSE - STUDY - DAY</pre>
+        <div class="hint"><b>Variants:</b></div>
+        <pre><button class="copy" data-copy="INT./EXT. CAR - MOVING - CONTINUOUS">Copy</button>INT./EXT. CAR - MOVING - CONTINUOUS</pre>
+        <pre><button class="copy" data-copy="EXT. DESERT HIGHWAY - LATER">Copy</button>EXT. DESERT HIGHWAY - LATER</pre>
+      </details>
+
+      <details data-tags="action prose description visual audible anchoring noun what how cue">
+        <summary>Action Lines (Show, Don’t Tell)</summary>
+        <div class="hint"><b>Focus:</b> <i>What</i> → <i>How we see it</i> → <i>Cue the reader</i>. Use an <b>anchoring noun</b>.</div>
+        <div class="row"><span class="pill">Present tense</span><span class="pill">1–3 lines</span><span class="pill">Visible/Audible</span><span class="pill">Anchoring noun</span></div>
+        <div class="hint"><b>What is happening (basic):</b></div>
+        <pre><button class="copy" data-copy="She enters the room with a sarcastic grin.">Copy</button>She enters the room with a sarcastic grin.</pre>
+        <div class="hint"><b>How we see it (cinematic):</b></div>
+        <pre><button class="copy" data-copy="A toothy grin spreads across her face as the door clicks. She enters the room.">Copy</button>A toothy grin spreads across her face as the door clicks. She enters the room.</pre>
+        <div class="hint"><b>Anchoring noun:</b></div>
+        <pre><button class="copy" data-copy="An orchard sprawls across the valley.">Copy</button>An orchard sprawls across the valley.</pre>
+        <pre><button class="copy" data-copy="An apple sits on a branch.">Copy</button>An apple sits on a branch.</pre>
+        <div class="hint"><b>More examples:</b></div>
+        <pre><button class="copy" data-copy="Rain lashes the rooftop. JAX slips, grabs the ledge, hangs on.">Copy</button>Rain lashes the rooftop. JAX slips, grabs the ledge, hangs on.</pre>
+        <pre><button class="copy" data-copy="A coffee mug trembles on the desk. Footsteps grow closer.">Copy</button>A coffee mug trembles on the desk. Footsteps grow closer.</pre>
+        <pre><button class="copy" data-copy="The corridor flickers as the generator struggles.">Copy</button>The corridor flickers as the generator struggles.</pre>
+      </details>
+
+      <details data-tags="dialogue character parenthetical subtext voice">
+        <summary>Character & Dialogue</summary>
+        <div class="hint"><b>Lesson:</b> Who speaks? How? Why now? Keep lines breathable.</div>
+        <pre><button class="copy" data-copy="JANE\nI don't know.">Copy</button>JANE
+I don't know.</pre>
+        <pre><button class="copy" data-copy="JANE\n(snarling)\nI don't know.">Copy</button>JANE
+(snarling)
+I don't know.</pre>
+        <pre><button class="copy" data-copy="JAX (V.O.)\nWe start at the end.">Copy</button>JAX (V.O.)
+We start at the end.</pre>
+        <pre><button class="copy" data-copy="MAYA (O.S.)\nFrom the van! Move!">Copy</button>MAYA (O.S.)
+From the van! Move!</pre>
+      </details>
+
+      <details data-tags="dual dialogue overlap banter">
+        <summary>Dual Dialogue (Overlap)</summary>
+        <pre><button class="copy" data-copy="JAX                   MAYA\nGo left!               No, right!\nNow!                   Trust me!">Copy</button>JAX                   MAYA
+Go left!               No, right!
+Now!                   Trust me!</pre>
+      </details>
+
+      <details data-tags="transition cut smash cut fade">
+        <summary>Transitions (Sparingly)</summary>
+        <pre><button class="copy" data-copy="CUT TO:">Copy</button>CUT TO:</pre>
+        <pre><button class="copy" data-copy="SMASH CUT:">Copy</button>SMASH CUT:</pre>
+        <pre><button class="copy" data-copy="FADE IN:">Copy</button>FADE IN:</pre>
+        <pre><button class="copy" data-copy="FADE OUT.">Copy</button>FADE OUT.</pre>
+      </details>
+
+      <details data-tags="montage intercut progression parallel">
+        <summary>Montage & Intercut</summary>
+        <pre><button class="copy" data-copy="MONTAGE – TRAINING\n-- Lifts weights\n-- Runs stairs\nEND MONTAGE">Copy</button>MONTAGE – TRAINING
+-- Lifts weights
+-- Runs stairs
+END MONTAGE</pre>
+        <pre><button class="copy" data-copy="MONTAGE – TRAINING\n-- Hands wrap in tape\n-- Sweat beads on the mat\n-- Glove THUDS into the bag\nEND MONTAGE">Copy</button>MONTAGE – TRAINING
+-- Hands wrap in tape
+-- Sweat beads on the mat
+-- Glove THUDS into the bag
+END MONTAGE</pre>
+        <pre><button class="copy" data-copy="INTERCUT – WAREHOUSE / VAN">Copy</button>INTERCUT – WAREHOUSE / VAN</pre>
+      </details>
+
+      <details data-tags="text on screen sfx lyrics">
+        <summary>On-Screen Text / SFX / Lyrics</summary>
+        <pre><button class="copy" data-copy="TEXT ON SCREEN: &quot;72 HOURS REMAIN&quot;">Copy</button>TEXT ON SCREEN: "72 HOURS REMAIN"</pre>
+        <pre><button class="copy" data-copy="SFX: ALARM BLARES">Copy</button>SFX: ALARM BLARES</pre>
+        <pre><button class="copy" data-copy="LYRICS:\n~ And we run into the night ~">Copy</button>LYRICS:
+~ And we run into the night ~</pre>
+      </details>
+
+      <details data-tags="length readability white space courier">
+        <summary>Numbers & Readability</summary>
+        <pre>Feature: 90–120 pages
+TV Hour: ~55–60 pages
+TV Half Hour: 22–30 pages
+Courier 12 • ~1 page ≈ 1 min</pre>
+      </details>
+
+      <details data-tags="polish pet peeves">
+        <summary>Industry Polish (Avoid)</summary>
+        <pre>✗ Over-capitalizing everything
+✗ Camera directions (“We see…”) unless POV
+✗ Action paragraphs over 4 lines
+✗ Dialogue bricks over 4 lines
+✗ Inconsistent sluglines</pre>
+      </details>
+
+    </div>
+  </aside>
+  <script>
+  (function(){
+    const btn=document.getElementById('df-toggle');
+    const panel=document.getElementById('df-panel');
+    const closeBtn=document.getElementById('df-close');
+    const search=document.getElementById('df-search');
+    const content=document.getElementById('df-content');
+    btn.addEventListener('click',()=>panel.classList.add('open'));
+    closeBtn.addEventListener('click',()=>panel.classList.remove('open'));
+    document.addEventListener('click',(e)=>{
+      const t=e.target.closest('button.copy'); if(!t) return;
+      const txt=t.dataset.copy||''; navigator.clipboard.writeText(txt).then(()=>{
+        const o=t.textContent; t.textContent='Copied!'; setTimeout(()=>t.textContent='Copy',900);
+      });
+    });
+    search.addEventListener('input',()=>{
+      const q=search.value.trim().toLowerCase();
+      const blocks=content.querySelectorAll('details');
+      blocks.forEach(d=>{
+        const tags=(d.getAttribute('data-tags')||d.textContent).toLowerCase();
+        d.style.display=!q||tags.includes(q)?'':'none';
+        if(!q){ d.open=d===blocks[0]; } else { d.open=!d.style.display; }
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
